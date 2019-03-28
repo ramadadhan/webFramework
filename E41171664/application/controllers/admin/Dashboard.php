@@ -22,4 +22,8 @@ class Dashboard extends CI_Controller {
 	{
 		$this->load->view('admin/dashboard');
 	}
+	public function barang(){
+		$this->load->view('admin/v_barang');
+	
+	}
 }

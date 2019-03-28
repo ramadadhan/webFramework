@@ -1,7 +1,7 @@
 <!-- Sidebar -->
 <ul class="sidebar navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="<?php base_url()?>dashboard">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span>
         </a>
@@ -13,8 +13,8 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
           <h6 class="dropdown-header">Sub menu:</h6>
-          <a class="dropdown-item" href="login.html">Barang</a>
-          <a class="dropdown-item" href="register.html">Karcayan</a>
+          <a class="dropdown-item" href="<?php base_url()?>barang">Barang</a>
+          <a class="dropdown-item" href="<?php base_url()?>karyawan">Karyawan</a>
           <a class="dropdown-item" href="forgot-password.html">User</a>
           <a class="dropdown-item" href="forgot-password.html">Suplier</a>
         </div>
