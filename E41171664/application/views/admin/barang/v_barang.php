@@ -35,7 +35,8 @@
         <div class="row">
           <div class="col-xl-3 col-sm-6 mb-3">
             <h3>Daftar Barang</h3>
-            <button class="btn-success">Tambah</button>
+            <center><?php echo anchor('admin/barang/tambah','Tambah Data'); ?></center>
+            <!-- <button class="btn-success">Tambah</button> -->
           </div>
           
         </div>
@@ -45,24 +46,30 @@
               <tr class="text-center">
                 <th>No</th>
                 <th>Kode Barang</th>
-                <th widht="500px">Nama Barang</th>
+                <th >Nama Barang</th>
                 <th>Deskripsi</th>
                 <th>Stok</th>
                 <th>Harga Barang</th>
-                <th colspan="2">Aksi</th>
+                <th>Aksi</th>
               </tr>
-              <? foreach($list as $row){?>
+              <?php 
+              $no = 1;
+              foreach($barang as $b){ 
+              ?>
               <tr>
-                <td>1</td>
-                <td><?echo $row->kode_barang;?></td>
-                <td>Semen Gresik</td>
-                <td>43.000</td>
-                <td>Sak</td>
-                <td>100</td>
-                <td><button class="btn-info">Ubah</button></td>
-                <td><button class="btn-danger">Hapus</button></td>
+                <td><?php echo $no++ ?></td>
+                <td><?php echo $b->kode_barang ?></td>
+                <td><?php echo $b->nama_barang ?></td>
+                <td><?php echo $b->deskripsi ?></td>
+                <td><?php echo $b->stok ?></td>
+                <td><?php echo $b->harga_barang ?></td>
+
+                <td>
+                      <?php echo anchor('admin/barang/edit/'.$b->kode_barang,'Edit'); ?>
+                      <?php echo anchor('admin/barang/hapus/'.$b->kode_barang,'Hapus'); ?>
+                </td>
               </tr>
-              <? }?>
+              <?php } ?>
             </table>
           </div>
         </div>   

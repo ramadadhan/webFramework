@@ -1,57 +1,23 @@
-<?php 
- 
-class M_barang extends CI_Model{
-	private $_table='barang';
+<?php
 
-    public $kode_barang;
-    public $nama_barang;
-    public $deskripsi;
-    public $stok;
-    public $harga_barang;
-
-    // public function rules()
-    // {
-    //     return[
-    //         ['field' => 'name',
-    //         'label' => 'Name',
-    //         'rules' => 'required'],
-
-    //         ['field' => 'price',
-    //         'label' => 'Price',
-    //         'rules' => 'required'],
-
-    //         ['field' => 'description',
-    //         'label' => 'Description',
-    //         'rules' => 'required']
-    //     ];
-	// }
-	
-    public function getAll(){
-        return $this->db->get($this->_table)->result();
+class M_Barang extends CI_Model{
+  
+    function tampil_data(){
+        return $this->db->get('barang');
     }
-    public function getById($id){
-        return $this->db->get_where($this->_table,['kode_barang' => $id])->row();
+    function input_data($data,$table){
+        $this->db->insert($table,$data);
     }
-    public function save(){
-        $post = $this->input->post();
-        $this->kode_barang = uniqid();
-        $this->nama_barang = $post['name barang'];
-        $this->deskripsi = $post['deskripsi'];
-        $this->stok = $post['stok'];
-        $this->harga_barang = $post['stok'];
-
-        $this->db->insert($this->_table, $this);
+    function hapus_data($where,$table){
+		$this->db->where($where);
+		$this->db->delete($table);
     }
-    public function update(){
-        $post = $this->input->post();
-        $this->nama_barang = $post['name barang'];
-        $this->deskripsi = $post['deskripsi'];
-        $this->stok = $post['stok'];
-        $this->harga_barang = $post['stok'];
-
-        $this->db->update($this->_table, $this, array('kode_barang' => $post['id']));
+    
+    function edit_data($where,$table){
+        return $this->db->get_where($table,$where);
     }
-    public function delete($id){
-        return $this->db->delete($this->_table, array('kode_barang' => $id));
+    function update_data($where,$data,$table){
+        $this->db->where($where);
+        $this->db->update($table,$data);
     }
 }
